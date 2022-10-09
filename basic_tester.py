@@ -19,12 +19,13 @@ def main():
     if os.path.exists("token.json"):
         creds = Credentials.from_authorized_user_file("token.json", SCOPES)
 
-    # if token it missing or not valid/expired create the token and save to file
+    # create the token and save to file if missing or not valid/expired
     if not (creds or creds.valid()):
         if creds and creds.expired and creds.refresh_token:
             creds.refresh(Request())
         else:
-            flow = InstalledAppFlow.from_client_secrets_file(CLIENT_SECRET_FILE, SCOPES)
+            flow = InstalledAppFlow.from_client_secrets_file(
+                CLIENT_SECRET_FILE, SCOPES)
             # creates local server for authentication and captures the response
             creds = flow.run_local_server()
         with open("token.json", "w") as token:
