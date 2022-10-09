@@ -13,3 +13,6 @@
 - Enable the bigquery API (enabled by default)
 - pip3 install requirements.txt
 
+#### How to run
+- python3 basic_tester.py --project_id=<PROJECT_ID>
+- Note: make sure you replace the project_id with the one you created in the intstallation steps
